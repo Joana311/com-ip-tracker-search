@@ -1,0 +1,45 @@
+import { useContext } from "react";
+import { DataContext } from "./contexts/DataContext";
+import Loading from "./Loading";
+
+function UserInfo() {
+  const { userData, isLoading } = useContext(DataContext);
+  return (
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="relative flex-col mb-[-12rem] md:mb-[-8rem] flex md:flex-row md:justify-between  z-10   w-4/5  md:px-2 xl:px-10 px-8 pt-5 py-7 mx-auto bg-white rounded-md md:rounded font-semibold sm:gap-x-24 md:gap-x-10 lg:gap-x-20 xl:gap-x-40 ">
+          <div className="mb-4 md:mb-0 md:text-left ">
+            <h3 className="mb-2 font-sans text-xs uppercase lg:text-l text-slate-500">
+              ip address
+            </h3>
+            <p className="text-xl lg:text-xl">{userData?.ip}</p>
+          </div>
+          <div className="mb-4 md:mb-0 md:text-left ">
+            <h3 className="mb-2 text-xs uppercase lg:text-l text-slate-500">
+              location
+            </h3>
+            <p className="text-xl lg:text-xl">{userData?.location?.region}</p>
+          </div>
+          <div className="mb-4 md:mb-0 md:text-left ">
+            <h3 className="mb-2 text-xs uppercase lg:text-l text-slate-500">
+              timezone
+            </h3>
+            <p className="text-xl lg:text-xl">{userData?.location?.timezone}</p>
+          </div>
+          <div className="md:text-left ">
+            <h3 className="mb-2 text-xs uppercase lg:text-l text-slate-500">
+              isp
+            </h3>
+            <p className="text-xl lg:text-xl">
+              {userData?.isp || userData?.as?.name}
+            </p>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default UserInfo;

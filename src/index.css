@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./Rubik-ExtraBold.woff") format("woff"),
+    url("/Rubik-ExtraBold.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./Rubik-Regular.woff") format("woff"),
+    url("/Rubik-Regular.woff2") format("woff2");
+  font-style: normal;
+}
+
+body {
+  background-color: hsl(0, 0%, 85%);
+}
