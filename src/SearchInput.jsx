@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef, useCallback } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { DataContext } from "./contexts/DataContext";
 
