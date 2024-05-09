@@ -1,10 +1,10 @@
 function Loading() {
   return (
-    <div className="flex items-center justify-center">
-      <button type="button" className="px-12 py-2 mt-10 bg-slate-200" disabled>
-        <svg className="h-8 mr-3 animate-spin" viewBox="0 0 24 24"></svg>
-        Processing...
-      </button>
+    <div className="flex items-center justify-center h-screen mt-[-4rem]">
+      <div className="relative">
+        <div className="w-24 h-24 border-t-8 border-b-8 border-gray-200 rounded-full"></div>
+        <div className="absolute top-0 left-0 w-24 h-24 border-t-8 border-b-8 border-blue-500 rounded-full animate-spin"></div>
+      </div>
     </div>
   );
 }
