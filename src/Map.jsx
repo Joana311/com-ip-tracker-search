@@ -5,18 +5,18 @@ import "leaflet/dist/leaflet.css";
 
 function Map() {
   const { userData } = useContext(DataContext);
-  const { lat, lon } = userData;
+  const { location } = userData;
 
   const outerBounds = [
     [50.505, -29.09],
     [52.505, 29.09],
   ];
 
-  if (!lat || !lon) return;
+  if (!location) return;
   return (
     <main className="relative z-0">
       <MapContainer
-        center={{ lat, lng: lon }}
+        center={{ lat: location.lat, lng: location.lng }}
         zoom={8}
         style={{ height: "100vh", width: "100%" }}
         scrollWheelZoom={false}
@@ -27,7 +27,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={{ lat, lng: lon }}>
+        <Marker position={{ lat: location.lat, lng: location.lng }}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
