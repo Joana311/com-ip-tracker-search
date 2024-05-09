@@ -4,7 +4,7 @@ import { DataContext } from "./contexts/DataContext";
 
 function SearchInput() {
   const { setIsloading, setUserData, setError } = useContext(DataContext);
-  const [searchInput, setSearchInput] = useState("192.212.174.101");
+  const [searchInput, setSearchInput] = useState("");
 
   function handleChange(e) {
     setSearchInput(e.target.value);
@@ -16,10 +16,17 @@ function SearchInput() {
         setError(false);
         setIsloading(true);
         const response = await fetch(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=${searchInput}`
+          // `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=${searchInput}`
+          `http://ip-api.com/json/${searchInput}`
         );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
+        if (data.status === "fail") throw new Error(data.message);
         setUserData(data);
+
         setIsloading(false);
       } catch (error) {
         setIsloading(false);
@@ -35,9 +42,14 @@ function SearchInput() {
         setError(false);
         setIsloading(true);
         const response = await fetch(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress="192.212.174.101"`
+          // `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress="192.212.174.101"`
+          "http://ip-api.com/json/24.48.0.1"
         );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         const data = await response.json();
+        if (data.status === "fail") throw new Error(data.message);
         setUserData(data);
         setIsloading(false);
       } catch (error) {
