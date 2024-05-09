@@ -2,9 +2,8 @@ import Map from "./Map";
 import Header from "./Header";
 import Loading from "./Loading";
 import Error from "./Error";
-import "./index.css";
 import { useContext } from "react";
-import { DataContext } from "./contexts/DataContext";
+import { DataContext } from "../contexts/DataContext";
 
 function App() {
   const { isLoading, error } = useContext(DataContext);

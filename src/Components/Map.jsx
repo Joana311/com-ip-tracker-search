@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { DataContext } from "./contexts/DataContext";
+import { DataContext } from "../contexts/DataContext";
 import "leaflet/dist/leaflet.css";
 
 function Map() {

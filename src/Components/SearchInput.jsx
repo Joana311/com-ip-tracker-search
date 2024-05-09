@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { IoIosArrowForward } from "react-icons/io";
-import { DataContext } from "./contexts/DataContext";
+import { DataContext } from "../contexts/DataContext";
 
 function SearchInput() {
   const { setIsloading, setUserData, setError } = useContext(DataContext);

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DataContext } from "./contexts/DataContext";
+import { DataContext } from "../contexts/DataContext";
 
 function UserInfo() {
   const { userData, error } = useContext(DataContext);
@@ -19,7 +19,7 @@ function UserInfo() {
           location
         </h3>
         <p className="text-xl lg:text-xl">
-          <span className="mr-1">{userData?.country}</span>
+          <span className="mr-1">{location?.country}</span>
           <span>{location?.region}</span>
         </p>
       </div>
