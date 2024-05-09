@@ -40,8 +40,9 @@ function SearchInput() {
       try {
         setError(false);
         setIsloading(true);
-        const response = await fetch();
-        `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress="192.212.174.101"`;
+        const response = await fetch(
+          "https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=192.212.174.101"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -51,6 +52,7 @@ function SearchInput() {
         setIsloading(false);
       } catch (error) {
         setIsloading(false);
+        console.log(error);
         setError(error.message);
       }
     }
