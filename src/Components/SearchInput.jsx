@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useState, useContext, useCallback, useEffect } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { DataContext } from "../contexts/DataContext";
 
 function SearchInput() {
-  const { setIsloading, setUserData, setError } = useContext(DataContext);
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState("192.212.174.101");
+  const { setIsloading, setError, setUserData } = useContext(DataContext);
 
   function handleChange(e) {
     setSearchInput(e.target.value);
@@ -15,10 +15,10 @@ function SearchInput() {
       try {
         setError(false);
         setIsloading(true);
+
         const response = await fetch(
           `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=${searchInput}`
         );
-
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -32,32 +32,13 @@ function SearchInput() {
         setError(error.message);
       }
     }
+
     getPosition();
   }, [searchInput, setError, setIsloading, setUserData]);
 
   useEffect(() => {
-    async function getPosition() {
-      try {
-        setError(false);
-        setIsloading(true);
-        const response = await fetch(
-          "https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=192.212.174.101"
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        if (data.status === "fail") throw new Error(data.message);
-        setUserData(data);
-        setIsloading(false);
-      } catch (error) {
-        setIsloading(false);
-        console.log(error);
-        setError(error.message);
-      }
-    }
-    getPosition();
-  }, [setError, setIsloading, setUserData]);
+    handleClick();
+  }, []);
 
   return (
     <div className="flex items-center justify-center mb-6">
