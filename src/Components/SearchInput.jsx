@@ -17,7 +17,7 @@ function SearchInput() {
         setIsloading(true);
 
         const response = await fetch(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=${searchInput}`
+          `https://geo.ipify.org/api/v2/country,city?apiKey=at_eHUa2KiA6RcR4yrUjjEiMbx4V2VBy&ipAddress=${searchInput}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
