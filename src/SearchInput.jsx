@@ -16,8 +16,7 @@ function SearchInput() {
         setError(false);
         setIsloading(true);
         const response = await fetch(
-          // `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=${searchInput}`
-          `http://ip-api.com/json/${searchInput}`
+          `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress=${searchInput}`
         );
 
         if (!response.ok) {
@@ -41,10 +40,8 @@ function SearchInput() {
       try {
         setError(false);
         setIsloading(true);
-        const response = await fetch(
-          // `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress="192.212.174.101"`
-          "http://ip-api.com/json/192.212.174.101"
-        );
+        const response = await fetch();
+        `https://geo.ipify.org/api/v2/country,city?apiKey=at_lKjzvscDFq8IcLELVqRvEz2UbYzv6&ipAddress="192.212.174.101"`;
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
