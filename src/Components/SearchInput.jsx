@@ -1,40 +1,39 @@
-import { useState, useContext, useCallback, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { DataContext } from "../contexts/DataContext";
 
 function SearchInput() {
   const [searchInput, setSearchInput] = useState("");
   const { setIsloading, setError, setUserData } = useContext(DataContext);
+  const prevSearchInput = useRef(null);
 
   function handleChange(e) {
     setSearchInput(e.target.value);
   }
 
-  const handleClick = useCallback(() => {
-    async function getPosition() {
-      try {
-        setError(false);
-        setIsloading(true);
+  const handleClick = async () => {
+    if (searchInput === prevSearchInput.current) return;
 
-        const response = await fetch(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=at_eHUa2KiA6RcR4yrUjjEiMbx4V2VBy&ipAddress=${searchInput}`
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        if (data.status === "fail") throw new Error(data.message);
-        setUserData(data);
+    try {
+      setError(false);
+      setIsloading(true);
 
-        setIsloading(false);
-      } catch (error) {
-        setIsloading(false);
-        setError(error.message);
+      const response = await fetch(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=at_eHUa2KiA6RcR4yrUjjEiMbx4V2VBy&ipAddress=${searchInput}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
+      const data = await response.json();
+      if (data.status === "fail") throw new Error(data.message);
+      setUserData(data);
+      setIsloading(false);
+      prevSearchInput.current = searchInput;
+    } catch (error) {
+      setIsloading(false);
+      setError(error.message);
     }
-
-    getPosition();
-  }, [searchInput, setError, setIsloading, setUserData]);
+  };
 
   useEffect(() => {
     handleClick();
