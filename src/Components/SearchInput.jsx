@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useContext, useEffect, useRef } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { DataContext } from "../contexts/DataContext";
@@ -13,26 +14,22 @@ function SearchInput() {
 
   const handleClick = async () => {
     if (searchInput === prevSearchInput.current) return;
-
-    try {
-      setError(false);
-      setIsloading(true);
-
-      const response = await fetch(
+    setError(false);
+    setIsloading(true);
+    axios
+      .get(
         `https://geo.ipify.org/api/v2/country,city?apiKey=at_eHUa2KiA6RcR4yrUjjEiMbx4V2VBy&ipAddress=${searchInput}`
-      );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      if (data.status === "fail") throw new Error(data.message);
-      setUserData(data);
-      setIsloading(false);
-      prevSearchInput.current = searchInput;
-    } catch (error) {
-      setIsloading(false);
-      setError(error.message);
-    }
+      )
+      .then(function (response) {
+        setUserData(response.data);
+      })
+      .catch(function (error) {
+        setError(error.response.data.messages);
+      })
+      .finally(function () {
+        setIsloading(false);
+        prevSearchInput.current = searchInput;
+      });
   };
 
   useEffect(() => {
