@@ -2,7 +2,12 @@ import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { DataContext } from "../contexts/DataContext";
 import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
+import { icon } from "leaflet";
+
+const ICON = icon({
+  iconUrl: "/marker.png",
+  iconSize: [32, 32],
+});
 
 function Map() {
   const { userData } = useContext(DataContext);
@@ -28,7 +33,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={{ lat: location.lat, lng: location.lng }}>
+        <Marker icon={ICON} position={{ lat: location.lat, lng: location.lng }}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
