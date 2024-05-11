@@ -3,7 +3,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { DataContext } from "../contexts/DataContext";
 
 function SearchInput() {
-  const [searchInput, setSearchInput] = useState("192.212.174.101");
+  const [searchInput, setSearchInput] = useState("");
   const { setIsloading, setError, setUserData } = useContext(DataContext);
 
   function handleChange(e) {
