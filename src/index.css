@@ -1,6 +1,6 @@
 .header {
-  background-image: url(../../assets/pattern-bg.png);
-  height: 225px;
+  background-image: url(./assets/pattern-bg.png);
+  height: 190px;
   position: relative;
   z-index: 1000;
   background-position: center;
@@ -109,4 +109,4 @@ body {
 .leaflet-container {
   width: 100vw;
   height: 90vh;
-}/*# sourceMappingURL=index.css.map */
+}
