@@ -36,7 +36,7 @@ export default function ModelSearch({setModelData}) {
 
 
     return (
-        <>
+        <div style={{marginRight: '1400px'}}>
             <Select showSearch
                 style={{
                     width: 500,
@@ -51,6 +51,6 @@ export default function ModelSearch({setModelData}) {
                 onChange={(e) => handleChange(e)}
                 onBlur={handleBlur}
                 options={modulesData} />
-        </>
+        </div>
     )
 }
