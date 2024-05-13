@@ -1,0 +1,24 @@
+@use '../abstracts/' as *;
+@import '../../components/Header/_header.scss';
+
+*,
+*::after,
+*::before {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-weight: normal;
+   font-size: 1rem;
+   outline: none;
+   border: none;
+}
+
+body {
+   font-family: 'Poppins', sans-serif;
+   overflow: hidden;
+}
+
+.leaflet-container {
+   width: 100vw;
+   height: 90vh;
+}

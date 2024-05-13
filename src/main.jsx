@@ -1,13 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./Components/App.jsx";
-import DataProvider from "./contexts/DataContext.jsx";
-import "./index.css";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './pages/Home/App';
+import './styles/css/index.css';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <DataProvider>
+ReactDOM.createRoot(document.getElementById('root')).render(
+   <React.StrictMode>
       <App />
-    </DataProvider>
-  </React.StrictMode>
+   </React.StrictMode>
 );

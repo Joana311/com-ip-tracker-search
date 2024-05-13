@@ -1,0 +1,98 @@
+.header {
+   $header-padding: 10%;
+
+   background-image: url(../../assets/pattern-bg.png);
+   height: 225px;
+   position: relative;
+   z-index: 1000;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   @include flexcolumn;
+   gap: 1.5rem;
+   padding: 0 $header-padding;
+
+   h1 {
+      font-size: 1.25rem;
+      color: white;
+      font-weight: bold;
+      margin-top: 1.5625rem;
+   }
+
+   .header__search {
+      @include flex(center);
+      height: 45px;
+      width: 50%;
+
+      input {
+         width: 90%;
+         height: 100%;
+         padding-left: 1.25rem;
+         border-radius: 0.625rem 0 0 0.625rem;
+         font-family: 'Poppins', sans-serif;
+      }
+
+      button {
+         width: 10%;
+         height: 100%;
+         font-weight: bold;
+         color: white;
+         background: black;
+         border-radius: 0 0.625rem 0.625rem 0;
+         cursor: pointer;
+      }
+   }
+
+   .header__info {
+      @include flex(space-between);
+      background: white;
+      height: 136px;
+      padding: 1.5625rem 0;
+      width: calc(100% - ($header-padding * 2));
+      position: absolute;
+      bottom: -4rem;
+      border: 1px lightgray solid;
+      padding: 0.625rem 0;
+      border-radius: 0.625rem;
+   }
+
+   .header__info-box {
+      $gap: 0.5rem;
+      @include flexcolumn;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      gap: $gap;
+
+      &:not(:last-child) {
+         border-right: 1px solid lightgray;
+      }
+
+      h2 {
+         font-size: 0.6rem;
+         color: gray;
+         text-transform: uppercase;
+         font-weight: 600;
+      }
+
+      h3 {
+         margin-bottom: calc($gap + 1rem);
+         font-weight: bold;
+         font-size: 1rem;
+      }
+   }
+}
+
+@media screen and (max-width: 768px) {
+   .header {
+      .header__info {
+         flex-direction: column;
+         bottom: -200px;
+         height: 290px;
+      }
+
+      .header__info-box {
+         border: none;
+      }
+   }
+}
